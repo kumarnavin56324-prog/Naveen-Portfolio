@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Naveen Kumar | Portfolio</title>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #020617;
+  color: white;
+}
+
+/* Background */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Hero */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hero h1 {
+  font-size: 55px;
+}
+
+.typing {
+  color: #818cf8;
+  margin-top: 10px;
+}
+
+/* Button */
+.btn {
+  margin: 10px;
+  padding: 12px 25px;
+  border-radius: 30px;
+  background: #6366f1;
+  color: white;
+  text-decoration: none;
+}
+
+/* Sections */
+section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+/* Chatbot */
+.chatbot {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.chatbox {
+  display: none;
+  width: 250px;
+  height: 300px;
+  background: black;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.chatbox input {
+  width: 100%;
+}
+
+/* Resume */
+.resume {
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles-js"></div>
+
+<div class="hero">
+  <h1>Naveen Kumar</h1>
+  <div class="typing" id="typing"></div>
+  <a href="#about" class="btn">Explore</a>
+  <a href="resume.pdf" class="btn resume" download>Download Resume</a>
+</div>
+
+<section id="about" data-aos="fade-up">
+  <h2>About Me</h2>
+  <p>
+    I am a Data Analyst and Anti-Piracy Specialist with 3.5+ years of experience.
+    I currently work at ZEE5 where I handle complete anti-piracy operations including
+    URL identification, enforcement, reporting, and client handling.
+    I have worked with major platforms like Amazon, JioStar, ULLU and Stage.
+  </p>
+</section>
+
+<section data-aos="fade-up">
+  <h2>Intellectual Property Rights (IPR)</h2>
+  <p>
+    Intellectual Property Rights (IPR) are legal protections given to creators for their original work.
+    This includes Copyright, Trademark, and Patent. My work focuses mainly on Copyright protection,
+    where I identify unauthorized use of digital content and take necessary actions.
+    I handle takedowns, counter-notices, and ensure that original content owners' rights are protected.
+  </p>
+</section>
+
+<section data-aos="fade-up">
+  <h2>Anti-Piracy Workflow</h2>
+  <p>
+    My workflow includes identifying pirated content across platforms like YouTube, TikTok,
+    and other UGC websites. After identifying URLs, I perform quality checks and initiate takedown requests.
+    I generate detailed reports for clients and track the removal progress.
+    I also resolve client queries and handle escalations efficiently.
+  </p>
+</section>
+
+<section data-aos="fade-up">
+  <h2>Tools & Automation</h2>
+  <p>
+    I use advanced tools to extract data from internet sources including YouTube, TikTok, and other platforms.
+    I have also built multiple extensions that help automate repetitive tasks.
+    These tools extract metadata, reduce manual effort, and improve team efficiency significantly.
+  </p>
+</section>
+
+<section data-aos="fade-up">
+  <h2>Skills</h2>
+  <div class="card">Excel & Power BI</div>
+  <div class="card">Python</div>
+  <div class="card">Data Analysis</div>
+  <div class="card">Automation</div>
+</section>
+
+<section data-aos="fade-up">
+  <h2>Experience</h2>
+  <p>
+    Currently working with ZEE5 in Anti-Piracy domain.
+    Previously worked with ULLU, Amazon, JioStar, and Stage.
+    Also worked in Billing Office for 1.5 years.
+  </p>
+</section>
+
+<section data-aos="fade-up">
+  <h2>Education</h2>
+  <p>
+    Pursued BCA but discontinued due to personal reasons.
+    Currently pursuing BAM alongside professional work.
+  </p>
+</section>
+
+<section data-aos="fade-up">
+  <h2>Contact</h2>
+  <p>
+    📞 9718118935 <br>
+    📧 kumarnavin56324@gmail.com <br><br>
+    LinkedIn: https://www.linkedin.com/in/naveen-kumar-8a0b9226b/<br>
+    GitHub: https://github.com/kumarnavin56324-prog
+  </p>
+</section>
+
+<!-- Chatbot -->
+<div class="chatbot">
+  <button onclick="toggleChat()">Chat</button>
+  <div class="chatbox" id="chatbox">
+    <div id="chatlog"></div>
+    <input type="text" id="msg" placeholder="Ask..." onkeydown="reply(event)">
+  </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<script>
+AOS.init();
+
+// Typing
+let text = "Senior Data Analyst | Anti-Piracy Expert";
+let i = 0;
+function typing() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typing, 50);
+  }
+}
+typing();
+
+// Particles
+particlesJS("particles-js", {
+  particles: { number: { value: 60 }, size: { value: 3 } }
+});
+
+// Chatbot
+function toggleChat() {
+  let box = document.getElementById("chatbox");
+  box.style.display = box.style.display === "block" ? "none" : "block";
+}
+
+function reply(e) {
+  if (e.key === "Enter") {
+    let msg = document.getElementById("msg").value;
+    let log = document.getElementById("chatlog");
+
+    let res = "I am Naveen's portfolio bot 😊";
+
+    if (msg.includes("skill")) res = "Naveen is expert in Excel, Power BI, Python & Anti-Piracy.";
+    if (msg.includes("contact")) res = "Call: 9718118935";
+
+    log.innerHTML += "<p>You: " + msg + "</p>";
+    log.innerHTML += "<p>Bot: " + res + "</p>";
+
+    document.getElementById("msg").value = "";
+  }
+}
+</script>
+
+</body>
+</html>
